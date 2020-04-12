@@ -1,0 +1,21 @@
+{
+  "name": "dynmap-standalone-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node -r dotenv/config --experimental-modules --es-module-specifier-resolution=node ./src/index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^6.8.0"
+  }
+}
