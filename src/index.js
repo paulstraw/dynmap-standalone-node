@@ -3,6 +3,7 @@ import cors from 'cors'
 
 import mysqlTiles from './routes/mysqlTiles'
 import mysqlConfiguration from './routes/mysqlConfiguration'
+import mysqlUpdate from './routes/mysqlUpdate'
 
 const app = express()
 const port = 3000
@@ -11,6 +12,7 @@ app.use(cors())
 
 app.get('/mysql-tiles', mysqlTiles)
 app.get('/mysql-configuration', mysqlConfiguration)
+app.get('/mysql-update', mysqlUpdate)
 app.use(express.static('./src/static'))
 
 
