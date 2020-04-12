@@ -4,7 +4,7 @@ const dbPrefix = process.env.MYSQL_DB_PREFIX
 
 function getStandaloneFile(fileName, serverId = 0) {
   return new Promise((resolve, reject) => {
-    const query = `SELECT Content from ${dpPrefix}StandaloneFiles WHERE FileName = ? AND ServerID = ?`
+    const query = `SELECT Content from ${dbPrefix}StandaloneFiles WHERE FileName = ? AND ServerID = ?`
 
     connectionPool.query(
       query,
