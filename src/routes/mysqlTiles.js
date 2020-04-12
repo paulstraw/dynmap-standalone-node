@@ -14,7 +14,7 @@ export default (req, res) => {
   const tilePathParts = tilePath.split('/')
 
   if (tilePathParts.length != 4) {
-    res.setHeader('Location', '/images/blank.png')
+    res.redirect('/images/blank.png')
     return
   }
 
@@ -42,8 +42,7 @@ export default (req, res) => {
     x = parseInt(fParts[0], 10)
     y = parseInt(fParts[1], 10)
   } else {
-    res.setHeader('Location', '/images/blank.png')
-    res.send('')
+    res.redirect('/images/blank.png')
     return
   }
 
@@ -59,8 +58,7 @@ export default (req, res) => {
       const row = results[0]
 
       if (!row) {
-        res.setHeader('Location', '/images/blank.png')
-        res.send('')
+        res.redirect('/images/blank.png')
         return
       }
 
