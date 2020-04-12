@@ -12,10 +12,12 @@ function getStandaloneFile(fileName, serverId = 0) {
       (err, results, fields) => {
         if (err) {
           reject(err)
+          return
         }
 
         if (!results) {
           reject('Not found')
+          return
         }
 
         const row = results[0]
@@ -33,6 +35,7 @@ async function updateStandaloneFile(fileName, content, serverId = 0) {
     connectionPool.query(query, [content, fileName, serverId], (err) => {
       if (err) {
         reject(err)
+        return
       }
 
       resolve('ok')
@@ -47,6 +50,7 @@ async function insertStandaloneFile(fileName, content, serverId = 0) {
     connectionPool.query(query, [content, fileName, serverId], (err) => {
       if (err) {
         reject(err)
+        return
       }
 
       resolve('ok')
