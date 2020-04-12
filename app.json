@@ -9,7 +9,7 @@
     },
     "MYSQL_PORT": {
       "description": "The `storage.port` from your Dynmap configuration.txt",
-      "value": 3306
+      "value": "3306"
     },
     "MYSQL_DATABASE": {
       "description": "The `storage.database` from your Dynmap configuration.txt"
@@ -27,6 +27,10 @@
     "DYNMAP_LOGIN_ENABLED": {
       "description": "For future use, don't change this now!",
       "value": "false"
+    },
+    "SESSION_SECRET": {
+      "description": "A secret key for verifying the integrity of signed cookies (you probably don't need to change this)",
+      "generator": "secret"
     }
   }
 }

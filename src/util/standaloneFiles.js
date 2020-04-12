@@ -15,7 +15,7 @@ function getStandaloneFile(fileName, serverId = 0) {
           return
         }
 
-        if (!results) {
+        if (!results || !results[0]) {
           reject('Not found')
           return
         }
