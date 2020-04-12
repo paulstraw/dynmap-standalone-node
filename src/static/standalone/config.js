@@ -6,6 +6,6 @@ var config = {
     login: 'standalone/MySQL_login.php',
     register: 'standalone/MySQL_register.php',
     tiles: '/mysql-tiles?tile=',
-    markers: 'standalone/MySQL_markers.php?marker=',
+    markers: '/mysql-markers?marker=',
   },
 }
