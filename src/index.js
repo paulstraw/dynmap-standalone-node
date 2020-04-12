@@ -11,5 +11,7 @@ app.use(cors())
 
 app.get('/mysql-tiles', mysqlTiles)
 app.get('/mysql-configuration', mysqlConfiguration)
+app.use(express.static('./src/static'))
+
 
 app.listen(port, () => console.log(`Listening on port ${port}`))
