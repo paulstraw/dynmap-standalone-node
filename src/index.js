@@ -9,9 +9,10 @@ import mysqlMarkers from './routes/mysqlMarkers'
 
 const app = express()
 const port = process.env.PORT || 3000
+const isDev = process.env.NODE_ENV === 'development' || !process.env.NODE_ENV
 
 app.use(cors())
-app.use(morgan('combined'))
+app.use(morgan(isDev ? 'dev' : 'combined'))
 
 app.get('/mysql-tiles', mysqlTiles)
 app.get('/mysql-configuration', mysqlConfiguration)
