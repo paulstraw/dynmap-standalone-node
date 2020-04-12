@@ -1,5 +1,7 @@
 import connectionPool from '../connectionPool'
 
+const dbPrefix = process.env.MYSQL_DB_PREFIX
+
 export default (req, res) => {
   const tilePath = req.query.tile
 
@@ -45,33 +47,30 @@ export default (req, res) => {
     return
   }
 
-  const query = `SELECT t.Image,t.Format,t.HashCode,t.LastUpdate FROM Maps m JOIN Tiles t WHERE m.WorldID=${connectionPool.escape(
-    world
-  )} AND m.MapID=${connectionPool.escape(
-    prefix
-  )} AND m.Variant=${connectionPool.escape(
-    variant
-  )} AND m.ID=t.MapID AND t.x=${connectionPool.escape(
-    x
-  )} AND t.y=${connectionPool.escape(y)} and t.zoom=${connectionPool.escape(
-    zoom
-  )}`
+  const query = `SELECT t.Image,t.Format,t.HashCode,t.LastUpdate FROM ${dbPrefix}Maps m JOIN ${dbPrefix}Tiles t WHERE m.WorldID = ? AND m.MapID = ? AND m.Variant = ? AND m.ID = t.MapID AND t.x = ? AND t.y = ? and t.zoom = ?`
 
-  connectionPool.query(query, (err, results) => {
-    if (err) {
-      throw err
+  connectionPool.query(
+    query,
+    [world, prefix, variant, x, y, zoom],
+    (err, results) => {
+      if (err) {
+        throw err
+      }
+      const row = results[0]
+
+      if (!row) {
+        res.setHeader('Location', '../images/blank.png')
+        res.send('')
+        return
+      }
+
+      res.setHeader(
+        'Content-Type',
+        row.Format === 0 ? 'image/png' : 'image/jpeg'
+      )
+      res.setHeader('Etag', row.HashCode)
+      res.setHeader('Last-Modified', new Date(row.LastUpdate).toUTCString())
+      res.send(row.Image)
     }
-    const row = results[0]
-
-    if (!row) {
-      res.setHeader('Location', '../images/blank.png')
-      res.send('')
-      return
-    }
-
-    res.setHeader('Content-Type', row.Format === 0 ? 'image/png' : 'image/jpeg')
-    res.setHeader('Etag', row.HashCode)
-    res.setHeader('Last-Modified', new Date(row.LastUpdate).toUTCString())
-    res.send(row.Image)
-  })
+  )
 }
