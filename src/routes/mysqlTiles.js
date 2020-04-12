@@ -23,7 +23,7 @@ export default (req, res) => {
   let prefix = tilePathParts[1]
   let prefixLength = prefix.length
   if (prefixLength > 4 && prefix.substr(prefixLength - 4) === '_day') {
-    prefix = prefix.substr(prefixLength - 4)
+    prefix = prefix.substr(0, prefixLength - 4)
     variant = 'DAY'
   }
 
