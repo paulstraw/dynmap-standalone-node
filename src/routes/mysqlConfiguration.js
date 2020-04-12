@@ -6,7 +6,7 @@ export default async (req, res) => {
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   res.status(200)
 
-  if (process.env.DYNMAP_LOGIN_ENABLED === 'false') {
+  if (process.env.DYNMAP_LOGIN_ENABLED !== 'true') {
     res.send(content)
   }
 }

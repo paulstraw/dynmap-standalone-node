@@ -23,6 +23,10 @@
     "MYSQL_DB_PREFIX": {
       "description": "The `storage.prefix` from your Dynmap configuration.txt (likely empty)",
       "required": false
+    },
+    "DYNMAP_LOGIN_ENABLED": {
+      "description": "For future use, don't change this now!",
+      "value": "false"
     }
   }
 }

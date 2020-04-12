@@ -14,7 +14,7 @@ export default async (req, res) => {
   const content = await getStandaloneFile(`dynmap_${world}.json`)
   res.status(200)
 
-  if (process.env.DYNMAP_LOGIN_ENABLED === 'false') {
+  if (process.env.DYNMAP_LOGIN_ENABLED !== 'true') {
     res.send(content)
   }
 }
