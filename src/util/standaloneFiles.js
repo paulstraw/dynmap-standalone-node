@@ -1,27 +1,57 @@
 import connectionPool from '../connectionPool'
 
+const dbPrefix = process.env.MYSQL_DB_PREFIX
+
 function getStandaloneFile(fileName, serverId = 0) {
   return new Promise((resolve, reject) => {
-    const query = `SELECT Content from ${
-      process.env.MYSQL_DB_PREFIX
-    }StandaloneFiles WHERE FileName = ${connectionPool.escape(
-      fileName
-    )} AND ServerId = ${connectionPool.escape(serverId)}`
+    const query = `SELECT Content from ${dpPrefix}StandaloneFiles WHERE FileName = ? AND ServerID = ?`
 
-    connectionPool.query(query, (err, results, fields) => {
+    connectionPool.query(
+      query,
+      [fileName, serverId],
+      (err, results, fields) => {
+        if (err) {
+          reject(err)
+        }
+
+        if (!results) {
+          reject('Not found')
+        }
+
+        const row = results[0]
+
+        resolve(row.Content)
+      }
+    )
+  })
+}
+
+async function updateStandaloneFile(fileName, content, serverId = 0) {
+  return new Promise((resolve, reject) => {
+    const query = `UPDATE ${dbPrefix}StandaloneFiles SET Content = ? WHERE FileName = ? AND ServerID = ?`
+
+    connectionPool.query(query, [content, fileName, serverId], (err) => {
       if (err) {
         reject(err)
       }
 
-      if (!results) {
-        reject('Not found')
-      }
-
-      const row = results[0]
-
-      resolve(row.Content)
+      resolve('ok')
     })
   })
 }
 
-export { getStandaloneFile }
+async function insertStandaloneFile(fileName, content, serverId = 0) {
+  return new Promise((resolve, reject) => {
+    const query = `INSERT INTO ${dbPrefix}StandaloneFiles (Content, FileName, ServerID) VALUES (?, ?, ?)`
+
+    connectionPool.query(query, [content, fileName, serverId], (err) => {
+      if (err) {
+        reject(err)
+      }
+
+      resolve('ok')
+    })
+  })
+}
+
+export { getStandaloneFile, updateStandaloneFile, insertStandaloneFile }

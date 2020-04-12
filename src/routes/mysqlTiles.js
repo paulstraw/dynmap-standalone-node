@@ -57,7 +57,7 @@ export default (req, res) => {
     zoom
   )}`
 
-  connectionPool.query(query, (err, results, fields) => {
+  connectionPool.query(query, (err, results) => {
     if (err) {
       throw err
     }
