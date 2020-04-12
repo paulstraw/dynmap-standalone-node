@@ -8,7 +8,8 @@
       "description": "The `storage.hostname` from your Dynmap configuration.txt"
     },
     "MYSQL_PORT": {
-      "description": "The `storage.port` from your Dynmap configuration.txt"
+      "description": "The `storage.port` from your Dynmap configuration.txt",
+      "value": 3306
     },
     "MYSQL_DATABASE": {
       "description": "The `storage.database` from your Dynmap configuration.txt"
@@ -20,7 +21,8 @@
       "description": "The `storage.password` from your Dynmap configuration.txt"
     },
     "MYSQL_DB_PREFIX": {
-      "description": "The `storage.prefix` from your Dynmap configuration.txt"
+      "description": "The `storage.prefix` from your Dynmap configuration.txt (likely empty)",
+      "required": false
     }
   }
 }
