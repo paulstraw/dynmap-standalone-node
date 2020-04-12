@@ -1,0 +1,26 @@
+{
+  "name": "dynmap-standalone-node",
+  "description": "An implementation of the Dynmap standalone server in Node.js.",
+  "website": "https://github.com/paulstraw/dynmap-standalone-node",
+  "success_url": "/",
+  "env": {
+    "MYSQL_HOST": {
+      "description": "The `storage.hostname` from your Dynmap configuration.txt"
+    },
+    "MYSQL_PORT": {
+      "description": "The `storage.port` from your Dynmap configuration.txt"
+    },
+    "MYSQL_DATABASE": {
+      "description": "The `storage.database` from your Dynmap configuration.txt"
+    },
+    "MYSQL_USER": {
+      "description": "The `storage.userid` from your Dynmap configuration.txt"
+    },
+    "MYSQL_PASSWORD": {
+      "description": "The `storage.password` from your Dynmap configuration.txt"
+    },
+    "MYSQL_DB_PREFIX": {
+      "description": "The `storage.prefix` from your Dynmap configuration.txt"
+    }
+  }
+}
