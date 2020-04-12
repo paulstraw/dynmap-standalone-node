@@ -24,7 +24,7 @@ Here are some guides from Heroku on common questions you might have:
 
 ## Running Locally
 
-If you want to play around with this locally (or contribute!), here are the basics of what you need to know to get up and running:
+If you want to play around with this locally (or contribute!), here are the basics of what you need to do to get up and running:
 
 1. `cp .env.sample .env`
 2. Configure `.env` with the appropriate info for your database and Dynmap config
