@@ -5,22 +5,32 @@
   "main": "./api/index.js",
   "scripts": {
     "start": "node -r dotenv/config --experimental-modules --es-module-specifier-resolution=node ./api/index",
+    "serve-client": "vue-cli-service serve",
+    "build-client": "vue-cli-service build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "core-js": "^3.6.5",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
     "morgan": "^1.10.0",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "vue": "^2.6.11"
   },
   "type": "module",
   "devDependencies": {
-    "eslint": "^6.8.0"
+    "@vue/cli-plugin-babel": "^4.3.1",
+    "@vue/cli-service": "^4.3.1",
+    "axios": "^0.19.2",
+    "eslint": "^6.8.0",
+    "leaflet": "^1.6.0",
+    "vue-template-compiler": "^2.6.11",
+    "vue2-leaflet": "^2.5.2"
   },
   "engines": {
     "node": "12.x"

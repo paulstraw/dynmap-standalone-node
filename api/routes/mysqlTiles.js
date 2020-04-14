@@ -33,7 +33,8 @@ export default (req, res) => {
   let zoom, x, y
   if (fParts.length === 3) {
     // zoom_x_y
-    zoom = fParts[0].length
+    const zoomInt = parseInt(fParts[0], 10)
+    zoom = isNaN(zoomInt) ? fParts[0].length : zoomInt
     x = parseInt(fParts[1], 10)
     y = parseInt(fParts[2], 10)
   } else if (fParts.length === 2) {
