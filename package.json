@@ -2,9 +2,9 @@
   "name": "dynmap-standalone-node",
   "version": "1.0.0",
   "description": "",
-  "main": "./src/index.js",
+  "main": "./api/index.js",
   "scripts": {
-    "start": "node -r dotenv/config --experimental-modules --es-module-specifier-resolution=node ./src/index",
+    "start": "node -r dotenv/config --experimental-modules --es-module-specifier-resolution=node ./api/index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",

@@ -20,7 +20,7 @@ app.use(
     resave: false,
   })
 )
-app.use(express.static('./src/static'))
+app.use(express.static('./api/static'))
 
 initializeRoutes(app)
 
